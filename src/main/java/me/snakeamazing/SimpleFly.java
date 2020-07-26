@@ -58,5 +58,8 @@ public class SimpleFly extends JavaPlugin{
         pm.registerEvents(new FlyJoinEvent(), this);
         pm.registerEvents(new MenuListeners(), this);
     }
+    public File getConfig(){
+        return config;
+    }
 
 }
