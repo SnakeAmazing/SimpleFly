@@ -1,4 +1,4 @@
-package me.snakeamazing.reloadcommand;
+package me.snakeamazing.commands;
 
 import me.snakeamazing.simplefly.SimpleFly;
 import me.snakeamazing.utils.Utils;

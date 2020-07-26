@@ -1,11 +1,11 @@
 package me.snakeamazing.simplefly;
 
-import me.snakeamazing.flyall.FlyAll;
-import me.snakeamazing.flycommand.FlyCommand;
-import me.snakeamazing.flyhelp.FlyHelp;
-import me.snakeamazing.flyother.FlyOther;
+import me.snakeamazing.commands.FlyAll;
+import me.snakeamazing.commands.FlyCommand;
+import me.snakeamazing.commands.FlyHelp;
+import me.snakeamazing.commands.FlyOther;
 import me.snakeamazing.listeners.FlyJoinEvent;
-import me.snakeamazing.reloadcommand.ReloadCommand;
+import me.snakeamazing.commands.ReloadCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
@@ -13,8 +13,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import team.unnamed.gui.listeners.MenuListeners;
-
-import javax.swing.event.MenuListener;
 
 public class SimpleFly extends JavaPlugin implements Listener {
 

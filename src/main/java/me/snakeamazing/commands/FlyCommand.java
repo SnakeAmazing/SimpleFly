@@ -1,4 +1,4 @@
-package me.snakeamazing.flycommand;
+package me.snakeamazing.commands;
 
 
 import me.snakeamazing.listeners.FlyEvent;

@@ -1,4 +1,4 @@
-package me.snakeamazing.flyother;
+package me.snakeamazing.commands;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.snakeamazing.listeners.FlyEvent;
