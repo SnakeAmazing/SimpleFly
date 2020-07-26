@@ -1,0 +1,27 @@
+main: me.snakeamazing.simplefly.SimpleFly
+version: ${project.version}
+name: SimpleFly
+author: SnakeAmazing
+softdepend: [PlaceholderAPI]
+
+commands:
+  simplefly:
+    aliases: [sf, fly help]
+    description: See all the commands (/sf help)
+    permission: simplefly.fly
+  fly:
+    aliases: fly
+    description: Enable or disable the Flight mode
+    permission: simplefly.fly
+  flyall:
+    aliases: sfall
+    description: Enables flight mode for everyone
+    permission: simplefly.*
+  flyto:
+    aliases: flyother
+    description: Enable flight mode to another player
+    permission: simplefly.other
+  fly reload:
+    aliases: flyreload
+    description: Reload the config files
+    permission: simplefly.*

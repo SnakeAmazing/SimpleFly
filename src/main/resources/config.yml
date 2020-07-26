@@ -1,0 +1,46 @@
+#Customization of the plugin, you mustn't touch this lines, only the ones without #
+
+#Basics--------------------------------
+Prefix: '&8[&bFly&8]&r '
+NoPerms: '&cNo tienes permisos!'
+NotFound: '&cComando no encontrado!'
+#--------------------------------------
+
+#FlyCommands-------------------------------------------
+Player Offline: '&cEl jugador &b%player_name% &cestar conectado!'
+Fly Enabled: '&eModo de vuelo activado!'
+Fly Disabled: '&eModo de vuelo desactivado!'
+Fly Enabled Other: '&eModo de vuelo activado por&b %player_name%&e!'
+Fly Disabled Other: '&eModo de vuelo desactivado por&b %player_name%&e!'
+Fly Enabled By: '&eModo de vuelo activado para&b %player_name%&e!'
+Fly Disabled By: '&eModo de vuelo desactivado para&b %player_name%&e!'
+Fly Enabled Everyone: '&eTodos a volar!'
+Fly Disabled Everyone: '&eSe ha terminado la diversion! :('
+
+#-------------------------------------------------------
+
+#Gui Configuration--------------------------------------
+Gui Title: '&bFly'
+Feather: '&bFly'
+Feather Lore: '&eActiva tu fly!'
+Fly Other: '&bActiva fly a otra persona'
+Fly Other Lore: '&eClick para ver los jugadores'
+Fly All: '&bActiva el fly para todos'
+Fly All Lore: '&eClick para activar el fly'
+#-------------------------------------------------------
+
+#ReloadMessages-----------------------------------------
+Reload: '&ePlugin recargandose.'
+Reload Done: '&aEl plugin ha sido recargado con exitosamente.'
+Reload Failed: '&cEl plugin no ha sido recargado, revisa la consola.'
+#--------------------------------------------------------
+
+
+
+
+#IGNORE THIS LINE, DON'T TOUCH IT------------------------------------
+Player join, fly is enabled/disabled/none: enabled
+#--------------------------------------------------------------------
+
+
+
