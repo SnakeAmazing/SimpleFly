@@ -1,7 +1,6 @@
 package me.snakeamazing.commands;
 
-import me.snakeamazing.simplefly.SimpleFly;
-import me.snakeamazing.utils.Utils;
+import me.snakeamazing.SimpleFly;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,16 +19,16 @@ public class ReloadCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        sender.sendMessage(Utils.chat(plugin.getConfig().getString("Prefix") + Utils.chat(plugin.getConfig().getString("Reload"))));
+        sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Reload"));
 
         try{
             this.plugin.reloadConfig();
-            sender.sendMessage(Utils.chat(plugin.getConfig().getString("Prefix") + Utils.chat(plugin.getConfig().getString("Reload Done"))));
+            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Reload Done"));
             return true;
         } catch (Exception e) {
             plugin.getLogger().log(Level.SEVERE, "An exception ocurred while reloading the plugin", e);
 
-            sender.sendMessage(Utils.chat(plugin.getConfig().getString("Prefix") + Utils.chat(plugin.getConfig().getString("Reload Failed"))));
+            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Reload Failed"));
 
             return true;
         }

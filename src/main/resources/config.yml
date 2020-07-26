@@ -16,7 +16,15 @@ Fly Enabled By: '&eModo de vuelo activado para&b %player_name%&e!'
 Fly Disabled By: '&eModo de vuelo desactivado para&b %player_name%&e!'
 Fly Enabled Everyone: '&eTodos a volar!'
 Fly Disabled Everyone: '&eSe ha terminado la diversion! :('
+#-------------------------------------------------------
 
+#Help---------------------------------------------------
+Help Spacers: '&7&m---------------------------------------------------'
+Help Title: '                        &bSimpleFly &eHelp'
+Fly Command: '&8· &b/fly &7&m--&r&7> &eEnable or Disable flight mode!'
+FlyOther Command: '&8· &b/flyto &7&m--&r&7> &eEnable or Disable flight mode to another player!'
+FlyAll Command: '&8· &b/flyall &7&m--&r&7> &eEnable or Disable flight mode for everyone!'
+Reload Command: '&8· &b/flyreload &7&m--&r&7> &eReload the Config files!'
 #-------------------------------------------------------
 
 #Gui Configuration--------------------------------------

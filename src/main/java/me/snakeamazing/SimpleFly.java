@@ -1,4 +1,4 @@
-package me.snakeamazing.simplefly;
+package me.snakeamazing;
 
 import me.snakeamazing.commands.FlyAll;
 import me.snakeamazing.commands.FlyCommand;
@@ -6,22 +6,22 @@ import me.snakeamazing.commands.FlyHelp;
 import me.snakeamazing.commands.FlyOther;
 import me.snakeamazing.listeners.FlyJoinEvent;
 import me.snakeamazing.commands.ReloadCommand;
+import me.snakeamazing.utils.File;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import team.unnamed.gui.listeners.MenuListeners;
 
-public class SimpleFly extends JavaPlugin implements Listener {
+public class SimpleFly extends JavaPlugin{
 
     PluginDescriptionFile file = getDescription();
     public String version = "(" + file.getVersion() + ")";
     public String nombre = ChatColor.YELLOW + "[" + ChatColor.AQUA + file.getName() + ChatColor.YELLOW + "]";
 
     public static String joinaction;
-
+    private final File config = new File(this, "config");
     public void onEnable(){
         saveDefaultConfig();
         Bukkit.getConsoleSender().sendMessage(nombre + ChatColor.WHITE +" Ha sido activado correctamente!" + version);
@@ -32,8 +32,6 @@ public class SimpleFly extends JavaPlugin implements Listener {
         joinaction = getConfig().getString("Player join, fly is enabled/disabled/none");
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
-
-            Bukkit.getPluginManager().registerEvents(this, this);
             Bukkit.getConsoleSender().sendMessage(nombre + " PlaceholderAPI found, hooking into it.");
 
         } else {
@@ -60,4 +58,5 @@ public class SimpleFly extends JavaPlugin implements Listener {
         pm.registerEvents(new FlyJoinEvent(), this);
         pm.registerEvents(new MenuListeners(), this);
     }
+
 }

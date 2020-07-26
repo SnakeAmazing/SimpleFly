@@ -1,6 +1,6 @@
 package me.snakeamazing.listeners;
 
-import me.snakeamazing.simplefly.SimpleFly;
+import me.snakeamazing.SimpleFly;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

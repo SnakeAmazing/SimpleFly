@@ -1,7 +1,6 @@
 package me.snakeamazing.commands;
 
-import me.snakeamazing.simplefly.SimpleFly;
-import me.snakeamazing.utils.Utils;
+import me.snakeamazing.SimpleFly;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,17 +27,17 @@ public class FlyHelp implements CommandExecutor {
 
                 Player p = (Player) sender;
                 if (p.hasPermission("simplefly.*") || (p.hasPermission("simplefly.fly"))) {
-                    p.sendMessage(Utils.chat("&7&m---------------------------------------------------"));
-                    p.sendMessage(Utils.chat("                        &bSimpleFly &eHelp       "));
-                    p.sendMessage(Utils.chat("&8· &b/fly &7&m--&r&7> &eEnable or Disable flight mode!"));
-                    p.sendMessage(Utils.chat("&8· &b/flyall &7&m--&r&7> &eEnable or Disable flight mode for everyone!"));
-                    p.sendMessage(Utils.chat("&8· &b/flyto &7&m--&r&7> &eEnable or Disable flight mode to another player!"));
-                    p.sendMessage(Utils.chat("&8· &b/flyreload &7&m--&r&7> &eReload the Config files!"));
-                    p.sendMessage(Utils.chat("&7&m---------------------------------------------------"));
+                    p.sendMessage(plugin.getConfig().getString("Help Spacers"));
+                    p.sendMessage(plugin.getConfig().getString("Help Title"));
+                    p.sendMessage(plugin.getConfig().getString("Fly Command"));
+                    p.sendMessage(plugin.getConfig().getString("FlyOther Command"));
+                    p.sendMessage(plugin.getConfig().getString("FlyAll Command"));
+                    p.sendMessage(plugin.getConfig().getString("Reload Command"));
+                    p.sendMessage(plugin.getConfig().getString("Help Spacers"));
 
                 } else {
 
-                    p.sendMessage(Utils.chat(config.getString("Prefix")+ Utils.chat(config.getString("NoPerms"))));
+                    p.sendMessage(config.getString("Prefix")+ config.getString("NoPerms"));
                 }
         return true;
     }

@@ -1,4 +1,4 @@
-main: me.snakeamazing.simplefly.SimpleFly
+main: me.snakeamazing.SimpleFly
 version: ${project.version}
 name: SimpleFly
 author: SnakeAmazing
