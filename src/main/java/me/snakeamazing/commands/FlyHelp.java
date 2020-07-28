@@ -25,19 +25,19 @@ public class FlyHelp implements CommandExecutor {
                 return false;
             }
 
-                Player p = (Player) sender;
-                if (p.hasPermission("simplefly.*") || (p.hasPermission("simplefly.fly"))) {
-                    p.sendMessage(plugin.getConfig().getString("Help Spacers"));
-                    p.sendMessage(plugin.getConfig().getString("Help Title"));
-                    p.sendMessage(plugin.getConfig().getString("Fly Command"));
-                    p.sendMessage(plugin.getConfig().getString("FlyOther Command"));
-                    p.sendMessage(plugin.getConfig().getString("FlyAll Command"));
-                    p.sendMessage(plugin.getConfig().getString("Reload Command"));
-                    p.sendMessage(plugin.getConfig().getString("Help Spacers"));
+                Player player = (Player) sender;
+                if (player.hasPermission("simplefly.*") || (player.hasPermission("simplefly.fly"))) {
+                    player.sendMessage(plugin.getConfig().getString("HelpSpacers"));
+                    player.sendMessage(plugin.getConfig().getString("HelpTitle"));
+                    player.sendMessage(plugin.getConfig().getString("FlyCommand"));
+                    player.sendMessage(plugin.getConfig().getString("FlyOtherCommand"));
+                    player.sendMessage(plugin.getConfig().getString("FlyAllCommand"));
+                    player.sendMessage(plugin.getConfig().getString("ReloadCommand"));
+                    player.sendMessage(plugin.getConfig().getString("HelpSpacers"));
 
                 } else {
 
-                    p.sendMessage(config.getString("Prefix")+ config.getString("NoPerms"));
+                    player.sendMessage(config.getString("Prefix")+ config.getString("NoPerms"));
                 }
         return true;
     }

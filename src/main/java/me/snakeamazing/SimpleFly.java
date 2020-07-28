@@ -60,7 +60,7 @@ public class SimpleFly extends JavaPlugin{
     }
     public File getConfig(){
         return config;
-        
+
     }
 
 }

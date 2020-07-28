@@ -3,6 +3,7 @@ package me.snakeamazing.commands;
 import me.snakeamazing.listeners.FlyEvent;
 import me.snakeamazing.SimpleFly;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,28 +22,28 @@ public class FlyAll implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 
         if(!(sender instanceof Player)){
-            sender.sendMessage(" You must be a player to run this command");
+            sender.sendMessage(ChatColor.YELLOW + "["+ ChatColor.AQUA + "SimpleFly"+ ChatColor.YELLOW + "]" + ChatColor.WHITE + " You must be a player to run this command.");
 
             return false;
         }
-        Player p = (Player) sender;
-        if(!p.getAllowFlight()){
+        Player player = (Player) sender;
+        if(!player.getAllowFlight()){
             for (Player all : Bukkit.getOnlinePlayers()){
-                Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(p));
-                all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Fly Enabled Everyone"));
+                Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(player));
+                all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyEnabledEveryone"));
                 all.setAllowFlight(true);
             }
 
         } else {
             for (Player all : Bukkit.getOnlinePlayers()){
-                Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(p));
-                all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Fly Disabled Everyone"));
+                Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(player));
+                all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyDisabledEveryone"));
                 all.setAllowFlight(false);
             }
 
         }
-        if (!p.hasPermission("simplefly.*") || (!p.hasPermission("simplefly.fly"))){
-            p.sendMessage(plugin.getConfig().getString("NoPerms"));
+        if (!player.hasPermission("simplefly.*") || (!player.hasPermission("simplefly.fly"))){
+            player.sendMessage(plugin.getConfig().getString("NoPerms"));
         }
 
         return true;

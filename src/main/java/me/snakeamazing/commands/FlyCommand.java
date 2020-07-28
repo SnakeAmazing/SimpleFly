@@ -21,9 +21,9 @@ public class FlyCommand implements CommandExecutor{
     private SimpleFly plugin;
     public void openFlyGui(Player player){
 
-        MenuBuilder builder = new MenuBuilder(plugin.getConfig().getString("Gui Title"), 3)
+        MenuBuilder builder = new MenuBuilder(plugin.getConfig().getString("GuiTitle"), 3)
                 .fillItem(
-                        new ItemBuilder(Material.CYAN_STAINED_GLASS_PANE, 1)
+                        new ItemBuilder(Material.STAINED_GLASS_PANE, 1, (byte) 9)
                                 .name("&7")
                                 .lore(
                                         new LoreBuilder()
@@ -39,18 +39,18 @@ public class FlyCommand implements CommandExecutor{
                                 .name(plugin.getConfig().getString("Feather"))
                                 .lore(
                                         new LoreBuilder()
-                                                .addLine(plugin.getConfig().getString("Feather Lore"))
+                                                .addLine(plugin.getConfig().getString("FeatherLore"))
                                                 .colorize()
                                 )
                                 .build()
                 )
                 .addItem(
                         11,
-                        new ItemBuilder(Material.PLAYER_HEAD)
-                            .name(plugin.getConfig().getString("Fly Other"))
+                        new ItemBuilder(Material.SKULL)
+                            .name(plugin.getConfig().getString("FlyOther"))
                             .lore(
                                     new LoreBuilder()
-                                        .addLine(plugin.getConfig().getString("Fly Other Lore"))
+                                        .addLine(plugin.getConfig().getString("FlyOtherLore"))
                                         .colorize()
                             )
                         .build()
@@ -58,10 +58,10 @@ public class FlyCommand implements CommandExecutor{
                 .addItem(
                         15,
                         new ItemBuilder(Material.BEACON)
-                        .name(plugin.getConfig().getString("Fly All"))
+                        .name(plugin.getConfig().getString("FlyAll"))
                         .lore(
                                 new LoreBuilder()
-                                .addLine(plugin.getConfig().getString("Fly All Lore"))
+                                .addLine(plugin.getConfig().getString("FlyAllLore"))
                                 .colorize()
                         )
                         .build()
@@ -71,19 +71,19 @@ public class FlyCommand implements CommandExecutor{
                         new SimpleButton(
                                 event -> {
                                     Player eventPlayer = (Player) event.getWhoClicked();
-                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.ENTITY_ENDER_DRAGON_GROWL, 1, 1);
+                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.ENDERDRAGON_GROWL, 1, 1);
 
                                     if(!eventPlayer.getAllowFlight()){
                                         for (Player all : Bukkit.getOnlinePlayers()){
                                             Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
-                                            all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Fly Enabled Everyone"));
+                                            all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyEnabledEveryone"));
                                             all.setAllowFlight(true);
                                         }
-
+                                        eventPlayer.closeInventory();
                                     } else {
                                         for (Player all : Bukkit.getOnlinePlayers()){
                                             Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
-                                            all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Fly Disabled Everyone"));
+                                            all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyDisabledEveryone"));
                                             all.setAllowFlight(false);
                                         }
                                         eventPlayer.closeInventory();
@@ -97,8 +97,7 @@ public class FlyCommand implements CommandExecutor{
                         new SimpleButton(
                                 event -> {
                                     Player eventPlayer = (Player) event.getWhoClicked();
-                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
-                                    eventPlayer.sendMessage("&aPer ara funciona :D");
+                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.LEVEL_UP, 1, 1);
                                     eventPlayer.closeInventory();
                                     return true;
                                 }
@@ -109,14 +108,14 @@ public class FlyCommand implements CommandExecutor{
                         new SimpleButton(
                                 event -> {
                                     Player eventPlayer = (Player) event.getWhoClicked();
-                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.LEVEL_UP, 1, 1);
                                     if (!eventPlayer.getAllowFlight()){
                                         Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
-                                        eventPlayer.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Fly Enabled"));
+                                        eventPlayer.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyEnabled"));
                                         eventPlayer.setAllowFlight(true);
                                     } else {
                                         Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
-                                        eventPlayer.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Fly Disabled"));
+                                        eventPlayer.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyDisabled"));
                                         eventPlayer.setAllowFlight(false);
                                     }
                                     eventPlayer.closeInventory();

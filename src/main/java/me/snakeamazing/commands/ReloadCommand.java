@@ -23,12 +23,12 @@ public class ReloadCommand implements CommandExecutor {
 
         try{
             this.plugin.reloadConfig();
-            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Reload Done"));
+            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("ReloadDone"));
             return true;
         } catch (Exception e) {
             plugin.getLogger().log(Level.SEVERE, "An exception ocurred while reloading the plugin", e);
 
-            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Reload Failed"));
+            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("ReloadFailed"));
 
             return true;
         }

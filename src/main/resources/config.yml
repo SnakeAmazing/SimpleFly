@@ -7,40 +7,40 @@ NotFound: '&cComando no encontrado!'
 #--------------------------------------
 
 #FlyCommands-------------------------------------------
-Player Offline: '&cEl jugador &b%player_name% &cestar conectado!'
-Fly Enabled: '&eModo de vuelo activado!'
-Fly Disabled: '&eModo de vuelo desactivado!'
-Fly Enabled Other: '&eModo de vuelo activado por&b %player_name%&e!'
-Fly Disabled Other: '&eModo de vuelo desactivado por&b %player_name%&e!'
-Fly Enabled By: '&eModo de vuelo activado para&b %player_name%&e!'
-Fly Disabled By: '&eModo de vuelo desactivado para&b %player_name%&e!'
-Fly Enabled Everyone: '&eTodos a volar!'
-Fly Disabled Everyone: '&eSe ha terminado la diversion! :('
+PlayerOffline: '&cEl jugador &b%player_name% &cestar conectado!'
+FlyEnabled: '&eModo de vuelo activado!'
+FlyDisabled: '&eModo de vuelo desactivado!'
+FlyEnabled Other: '&eModo de vuelo activado por&b %player_name%&e!'
+FlyDisabled Other: '&eModo de vuelo desactivado por&b %player_name%&e!'
+FlyEnabled By: '&eModo de vuelo activado para&b %player_name%&e!'
+FlyDisabled By: '&eModo de vuelo desactivado para&b %player_name%&e!'
+FlyEnabled Everyone: '&eTodos a volar!'
+FlyDisabled Everyone: '&eSe ha terminado la diversion! :('
 #-------------------------------------------------------
 
 #Help---------------------------------------------------
-Help Spacers: '&7&m---------------------------------------------------'
-Help Title: '                        &bSimpleFly &eHelp'
-Fly Command: '&8· &b/fly &7&m--&r&7> &eEnable or Disable flight mode!'
-FlyOther Command: '&8· &b/flyto &7&m--&r&7> &eEnable or Disable flight mode to another player!'
-FlyAll Command: '&8· &b/flyall &7&m--&r&7> &eEnable or Disable flight mode for everyone!'
-Reload Command: '&8· &b/flyreload &7&m--&r&7> &eReload the Config files!'
+HelpSpacers: '&7&m---------------------------------------------------'
+HelpTitle: '                        &bSimpleFly &eHelp'
+FlyCommand: '&8· &b/fly &7&m--&r&7> &eEnable or Disable flight mode!'
+FlyOtherCommand: '&8· &b/flyto &7&m--&r&7> &eEnable or Disable flight mode to another player!'
+FlyAllCommand: '&8· &b/flyall &7&m--&r&7> &eEnable or Disable flight mode for everyone!'
+ReloadCommand: '&8· &b/flyreload &7&m--&r&7> &eReload the Config files!'
 #-------------------------------------------------------
 
 #Gui Configuration--------------------------------------
-Gui Title: '&bFly'
+GuiTitle: '&bFly'
 Feather: '&bFly'
-Feather Lore: '&eActiva tu fly!'
-Fly Other: '&bActiva fly a otra persona'
-Fly Other Lore: '&eClick para ver los jugadores'
-Fly All: '&bActiva el fly para todos'
-Fly All Lore: '&eClick para activar el fly'
+FeatherLore: '&eActiva tu fly!'
+FlyOther: '&bActiva fly a otra persona'
+FlyOtherLore: '&eClick para ver los jugadores'
+FlyAll: '&bActiva el fly para todos'
+FlyAllLore: '&eClick para activar el fly'
 #-------------------------------------------------------
 
 #ReloadMessages-----------------------------------------
 Reload: '&ePlugin recargandose.'
-Reload Done: '&aEl plugin ha sido recargado con exitosamente.'
-Reload Failed: '&cEl plugin no ha sido recargado, revisa la consola.'
+ReloadDone: '&aEl plugin ha sido recargado con exitosamente.'
+ReloadFailed: '&cEl plugin no ha sido recargado, revisa la consola.'
 #--------------------------------------------------------
 
 
