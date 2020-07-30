@@ -10,12 +10,13 @@ NotFound: '&cComando no encontrado!'
 PlayerOffline: '&cEl jugador &b%player_name% &cestar conectado!'
 FlyEnabled: '&eModo de vuelo activado!'
 FlyDisabled: '&eModo de vuelo desactivado!'
-FlyEnabled Other: '&eModo de vuelo activado por&b %player_name%&e!'
-FlyDisabled Other: '&eModo de vuelo desactivado por&b %player_name%&e!'
-FlyEnabled By: '&eModo de vuelo activado para&b %player_name%&e!'
-FlyDisabled By: '&eModo de vuelo desactivado para&b %player_name%&e!'
-FlyEnabled Everyone: '&eTodos a volar!'
-FlyDisabled Everyone: '&eSe ha terminado la diversion! :('
+FlyEnabledOther: '&eModo de vuelo activado por&b %player_name%&e!'
+FlyDisabledOther: '&eModo de vuelo desactivado por&b %player_name%&e!'
+SpecifyAPlayer: '&cDebes especificar a un jugador!'
+FlyEnabledBy: '&eModo de vuelo activado para&b %player_name%&e!'
+FlyDisabledBy: '&eModo de vuelo desactivado para&b %player_name%&e!'
+FlyEnabledEveryone: '&eTodos a volar!'
+FlyDisabledEveryone: '&eSe ha terminado la diversion! :('
 #-------------------------------------------------------
 
 #Help---------------------------------------------------
@@ -35,6 +36,8 @@ FlyOther: '&bActiva fly a otra persona'
 FlyOtherLore: '&eClick para ver los jugadores'
 FlyAll: '&bActiva el fly para todos'
 FlyAllLore: '&eClick para activar el fly'
+Exit: '&cSalir'
+ExitLore: '&7Click para cerrar el menu'
 #-------------------------------------------------------
 
 #ReloadMessages-----------------------------------------
@@ -43,10 +46,7 @@ ReloadDone: '&aEl plugin ha sido recargado con exitosamente.'
 ReloadFailed: '&cEl plugin no ha sido recargado, revisa la consola.'
 #--------------------------------------------------------
 
-
-
-
-#IGNORE THIS LINE, DON'T TOUCH IT------------------------------------
+#--------------------------------------------------------------------
 Player join, fly is enabled/disabled/none: enabled
 #--------------------------------------------------------------------
 

@@ -1,14 +1,17 @@
 package me.snakeamazing.commands;
 
-import me.clip.placeholderapi.PlaceholderAPI;
-import me.snakeamazing.listeners.FlyEvent;
 import me.snakeamazing.SimpleFly;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import team.unnamed.gui.button.SimpleButton;
+import team.unnamed.gui.item.ItemBuilder;
+import team.unnamed.gui.item.LoreBuilder;
+import team.unnamed.gui.menu.MenuBuilder;
 
 public class FlyOther implements CommandExecutor {
 
@@ -19,10 +22,11 @@ public class FlyOther implements CommandExecutor {
     }
 
 
+
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (args.length == 0){
-            sender.sendMessage(ChatColor.RED + "You must specify a Player");
+            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("SpecifyAPlayer"));
             return true;
         }
 
@@ -31,7 +35,9 @@ public class FlyOther implements CommandExecutor {
             return false;
         }
 
-        Player other = Bukkit.getPlayer(args[0]);
+
+
+        /*Player other = Bukkit.getPlayer(args[0]);
         Player player = (Player) sender;
 
         if (player.hasPermission("simplefly.*") || (player.hasPermission("simplefly.fly.other"))){
@@ -71,7 +77,7 @@ public class FlyOther implements CommandExecutor {
                 // THE MESSAGE THAT THE PLAYER GETS
                 other.sendMessage(plugin.getConfig().getString("Prefix") + withPlaceholders2);
             }
-        }
+        } */
         return false;
     }
 }
