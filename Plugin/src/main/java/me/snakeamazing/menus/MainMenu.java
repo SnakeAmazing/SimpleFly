@@ -94,8 +94,7 @@ public class MainMenu implements Menu {
                         new SimpleButton(
                                 event -> {
                                     Player eventPlayer = (Player) event.getWhoClicked();
-                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.ENDERDRAGON_GROWL, 1, 1);
-                                    if (eventPlayer.hasPermission("flyother.all") || eventPlayer.hasPermission("simplefly.*")) {
+                                    if (eventPlayer.hasPermission("simplefly.flyall") || eventPlayer.hasPermission("simplefly.*")) {
                                         if (!eventPlayer.getAllowFlight()) {
                                             for (Player all : Bukkit.getOnlinePlayers()) {
                                                 Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));

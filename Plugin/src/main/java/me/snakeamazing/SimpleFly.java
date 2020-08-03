@@ -47,7 +47,7 @@ public class SimpleFly extends JavaPlugin{
     public void registerCommands(){
         this.getCommand("simplefly").setExecutor(new FlyHelp(this));
         this.getCommand("flyall").setExecutor(new FlyAll(this));
-        this.getCommand("flyto").setExecutor(new FlyOther(this));
+        this.getCommand("flyother").setExecutor(new FlyOther(this));
         this.getCommand("fly reload").setExecutor(new ReloadCommand(this));
         this.getCommand("fly").setExecutor(new FlyCommand(this));
 

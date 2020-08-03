@@ -23,6 +23,8 @@ public class FlyOther implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
+
+
         if (args.length == 0){
             sender.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.specify-player"));
             return true;
@@ -33,16 +35,16 @@ public class FlyOther implements CommandExecutor {
             return false;
         }
 
-        Player other = Bukkit.getPlayer(args[0]);
+
         Player player = (Player) sender;
-
-
+        Player other = Bukkit.getPlayer(args[0]);
 
             if (other == null){
                 player.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.player-offline").replace("%target%", args[0]));
                 return true;
             }
-        if (player.hasPermission("simplefly.*") || player.hasPermission("simplefly.flyother")){
+
+        if (player.hasPermission("simplefly.flyother") || player.hasPermission("simplefly.*")){
             if (!other.getAllowFlight()){
                 Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(player));
                 other.setAllowFlight(true);
