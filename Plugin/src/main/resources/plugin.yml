@@ -6,8 +6,8 @@ softdepend: [PlaceholderAPI]
 
 commands:
   simplefly:
-    aliases: [sf, fly help]
-    description: See all the commands (/sf help)
+    aliases: [sf, fly help, sf help]
+    description: See all the commands (/sf)
   fly:
     aliases: fly
     description: Enable or disable the Flight mode

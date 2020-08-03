@@ -1,5 +1,6 @@
 package me.snakeamazing;
 
+import me.snakeamazing.api.NMSHandler;
 import me.snakeamazing.commands.FlyAll;
 import me.snakeamazing.commands.FlyCommand;
 import me.snakeamazing.commands.FlyHelp;
@@ -12,7 +13,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import team.unnamed.gui.listeners.MenuListeners;
+import team.unnamed.gui.MenuListeners;
 
 public class SimpleFly extends JavaPlugin{
 
@@ -22,11 +23,27 @@ public class SimpleFly extends JavaPlugin{
 
     public static String joinaction;
     private final File config = new File(this, "config");
+
+    private NMSHandler nmsHandler;
+    //private String nmsVersion;
+
+    /*public void onLoad(){
+        Instance = this;
+        nmsVersion = getNMSVersion();
+    } */
+
     public void onEnable(){
+       /* if(!enableNSMHandler()) {
+            getLogger().severe("Disabling plugin! Version not supported");
+            getPluginLoader().disablePlugin(this);
+            return;
+        } */
+
         saveDefaultConfig();
         Bukkit.getConsoleSender().sendMessage(nombre + ChatColor.WHITE +" Ha sido activado correctamente!" + version);
         registerCommands();
         registerEvents();
+
 
 
         joinaction = getConfig().getString("Player join, fly is enabled/disabled/none");
