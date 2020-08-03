@@ -19,18 +19,24 @@ public class ReloadCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("Reload"));
+        if (sender.hasPermission("simplefly.*") || sender.hasPermission("simplefly.reload")) {
 
-        try{
-            this.plugin.reloadConfig();
-            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("ReloadDone"));
-            return true;
-        } catch (Exception e) {
-            plugin.getLogger().log(Level.SEVERE, "An exception ocurred while reloading the plugin", e);
+            sender.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.reloadmessages.reload"));
 
-            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("ReloadFailed"));
+            try {
+                this.plugin.reloadConfig();
+                sender.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.reloadmessages.reload-done"));
+                return true;
+            } catch (Exception e) {
+                plugin.getLogger().log(Level.SEVERE, "An exception ocurred while reloading the plugin", e);
 
-            return true;
+                sender.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.reloadmessages.reload-failed"));
+
+                return true;
+            }
+        } else {
+            sender.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.no-permission")) ;
         }
+        return true;
     }
 }

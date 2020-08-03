@@ -10,19 +10,21 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class FlyJoinEvent implements Listener {
 
     @EventHandler
-    public void onJoin (PlayerJoinEvent e) {
-        Player p = e.getPlayer();
+    public void onJoin (PlayerJoinEvent event) {
+        Player player = event.getPlayer();
         if (SimpleFly.joinaction.equalsIgnoreCase("enabled")) {
 
-            Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(p));
+            Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(player));
 
-            if (p.hasPermission("simplefly.*") || (p.hasPermission("simplefly.fly"))) {
-                p.setAllowFlight(true);
+            if (player.hasPermission("simplefly.*") || (player.hasPermission("simplefly.fly"))) {
+                player.setAllowFlight(true);
+                player.setFlying(true);
 
             } else {
                 if (SimpleFly.joinaction.equalsIgnoreCase("disabled")) {
-                    Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(p));
-                    p.setAllowFlight(false);
+                    Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(player));
+                    player.setAllowFlight(false);
+                    player.setFlying(false);
 
                 }
             }

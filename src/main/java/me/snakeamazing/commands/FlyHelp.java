@@ -1,6 +1,7 @@
 package me.snakeamazing.commands;
 
 import me.snakeamazing.SimpleFly;
+import me.snakeamazing.utils.File;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,17 +28,17 @@ public class FlyHelp implements CommandExecutor {
 
                 Player player = (Player) sender;
                 if (player.hasPermission("simplefly.*") || (player.hasPermission("simplefly.fly"))) {
-                    player.sendMessage(plugin.getConfig().getString("HelpSpacers"));
-                    player.sendMessage(plugin.getConfig().getString("HelpTitle"));
-                    player.sendMessage(plugin.getConfig().getString("FlyCommand"));
-                    player.sendMessage(plugin.getConfig().getString("FlyOtherCommand"));
-                    player.sendMessage(plugin.getConfig().getString("FlyAllCommand"));
-                    player.sendMessage(plugin.getConfig().getString("ReloadCommand"));
-                    player.sendMessage(plugin.getConfig().getString("HelpSpacers"));
+                    player.sendMessage(plugin.getConfig().getString("messages.help.help-spacers"));
+                    player.sendMessage(plugin.getConfig().getString("messages.help.help-title"));
+                    player.sendMessage(plugin.getConfig().getString("messages.help.fly-command"));
+                    player.sendMessage(plugin.getConfig().getString("messages.help.fly-other-command"));
+                    player.sendMessage(plugin.getConfig().getString("messages.help.fly-all-command"));
+                    player.sendMessage(plugin.getConfig().getString("messages.help.reload-command"));
+                    player.sendMessage(plugin.getConfig().getString("messages.help.help-spacers"));
 
                 } else {
 
-                    player.sendMessage(config.getString("Prefix")+ config.getString("NoPerms"));
+                    player.sendMessage(config.getString("messages.prefix")+ config.getString("messages.no-permission"));
                 }
         return true;
     }

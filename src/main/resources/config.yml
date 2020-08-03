@@ -1,54 +1,72 @@
 #Customization of the plugin, you mustn't touch this lines, only the ones without #
-
+messages:
 #Basics--------------------------------
-Prefix: '&8[&bFly&8]&r '
-NoPerms: '&cNo tienes permisos!'
-NotFound: '&cComando no encontrado!'
+  prefix: '&8[&bFly&8]&r '
+  no-permission: '&cNo tienes permisos!'
+  not-found: '&cComando no encontrado!'
 #--------------------------------------
 
 #FlyCommands-------------------------------------------
-PlayerOffline: '&cEl jugador &b%player_name% &cestar conectado!'
-FlyEnabled: '&eModo de vuelo activado!'
-FlyDisabled: '&eModo de vuelo desactivado!'
-FlyEnabledOther: '&eModo de vuelo activado por&b %player_name%&e!'
-FlyDisabledOther: '&eModo de vuelo desactivado por&b %player_name%&e!'
-SpecifyAPlayer: '&cDebes especificar a un jugador!'
-FlyEnabledBy: '&eModo de vuelo activado para&b %player_name%&e!'
-FlyDisabledBy: '&eModo de vuelo desactivado para&b %player_name%&e!'
-FlyEnabledEveryone: '&eTodos a volar!'
-FlyDisabledEveryone: '&eSe ha terminado la diversion! :('
+  commands:
+    player-offline: '&cEl jugador &b%target% &cno esta conectado!'
+    fly-enabled: '&eModo de vuelo activado!'
+    fly-disabled: '&eModo de vuelo desactivado!'
+    fly-enabled-by: '&eModo de vuelo activado por&b %player_name%&e!'
+    fly-disabled-by: '&eModo de vuelo desactivado por&b %player_name%&e!'
+    specify-player: '&cDebes especificar a un jugador!'
+    fly-enabled-other: '&eModo de vuelo activado para&b %target%&e!'
+    fly-disabled-other: '&eModo de vuelo desactivado para&b %target%&e!'
+    fly-enabled-everyone: '&eTodos a volar!'
+    fly-disabled-everyone: '&eSe ha terminado la diversion! :('
 #-------------------------------------------------------
 
 #Help---------------------------------------------------
-HelpSpacers: '&7&m---------------------------------------------------'
-HelpTitle: '                        &bSimpleFly &eHelp'
-FlyCommand: '&8· &b/fly &7&m--&r&7> &eEnable or Disable flight mode!'
-FlyOtherCommand: '&8· &b/flyto &7&m--&r&7> &eEnable or Disable flight mode to another player!'
-FlyAllCommand: '&8· &b/flyall &7&m--&r&7> &eEnable or Disable flight mode for everyone!'
-ReloadCommand: '&8· &b/flyreload &7&m--&r&7> &eReload the Config files!'
+  help:
+    help-spacers: '&7&m---------------------------------------------------'
+    help-title: '                        &bSimpleFly &eHelp'
+    fly-command: '&8· &b/fly &7&m--&r&7> &eEnable or Disable flight mode!'
+    fly-other-command: '&8· &b/flyto &7&m--&r&7> &eEnable or Disable flight mode to another player!'
+    fly-all-command: '&8· &b/flyall &7&m--&r&7> &eEnable or Disable flight mode for everyone!'
+    reload-command: '&8· &b/flyreload &7&m--&r&7> &eReload the Config files!'
 #-------------------------------------------------------
 
 #Gui Configuration--------------------------------------
-GuiTitle: '&bFly'
-Feather: '&bFly'
-FeatherLore: '&eActiva tu fly!'
-FlyOther: '&bActiva fly a otra persona'
-FlyOtherLore: '&eClick para ver los jugadores'
-FlyAll: '&bActiva el fly para todos'
-FlyAllLore: '&eClick para activar el fly'
-Exit: '&cSalir'
-ExitLore: '&7Click para cerrar el menu'
+  gui:
+    title: '&bFly'
+    feather: '&bFly'
+    feather-lore: '&eActiva tu fly!'
+    fly-other: '&bActiva fly a otra persona'
+    fly-other-lore: '&eClick para ver los jugadores'
+    fly-all: '&bActiva el fly para todos'
+    fly-all-lore: '&eClick para activar el fly'
+    exit: '&cSalir'
+    exit-lore: '&7Click para cerrar el menu'
 #-------------------------------------------------------
 
+#Titles-------------------------------------------------
+  titles:
+    fly-enabled: '&b&oFLY ACTIVADO'
+    fly-disabled: '&c&oFLY DESACTIVADO'
+    fly-all-enabled: '&b&oFLY PARA TODOS'
+    fly-all-disabled: '&c&lSE ACABO EL FLY'
+    fly-other-enabled: '&b&oFLY ACTIVADO'
+    fly-other-disabled: '&c&oFLY DESACTIVADO'
+
+  subtitles:
+    fly-enabled: '&e&l&oDISFRUTA'
+    fly-disabled: ''
+    fly-all-enabled: '&e&l&oDISFRUTA'
+    fly-all-disabled: ''
+    fly-other-enabled: '&e&oActivado por: %player_name%'
+    fly-other-disabled: '&e&oDesactivado por: %player_name%'
+
 #ReloadMessages-----------------------------------------
-Reload: '&ePlugin recargandose.'
-ReloadDone: '&aEl plugin ha sido recargado con exitosamente.'
-ReloadFailed: '&cEl plugin no ha sido recargado, revisa la consola.'
+  reloadmessages:
+    reload: '&ePlugin recargandose.'
+    reload-done: '&aEl plugin ha sido recargado con exitosamente.'
+    reload-failed: '&cEl plugin no ha sido recargado, revisa la consola.'
 #--------------------------------------------------------
 
 #--------------------------------------------------------------------
 Player join, fly is enabled/disabled/none: enabled
 #--------------------------------------------------------------------
-
-
-

@@ -2,14 +2,9 @@ package me.snakeamazing.menus;
 
 import me.snakeamazing.SimpleFly;
 import me.snakeamazing.listeners.FlyEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Sound;
-import org.bukkit.block.Skull;
-import org.bukkit.enchantments.Enchantment;
+import net.wesjd.anvilgui.AnvilGUI;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import team.unnamed.gui.button.SimpleButton;
 import team.unnamed.gui.item.ItemBuilder;
@@ -17,17 +12,17 @@ import team.unnamed.gui.item.LoreBuilder;
 import team.unnamed.gui.item.type.SkullBuilder;
 import team.unnamed.gui.menu.MenuBuilder;
 
-public class MainMenu implements Menu{
+public class MainMenu implements Menu {
 
     private SimpleFly plugin;
 
-    public MainMenu(SimpleFly plugin){
+    public MainMenu(SimpleFly plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public MenuBuilder create(Player player) {
-        return new MenuBuilder(plugin.getConfig().getString("GuiTitle"), 3)
+        return new MenuBuilder(plugin.getConfig().getString("messages.gui.title"), 3)
                 .fillItem(
                         new ItemBuilder(Material.STAINED_GLASS_PANE, 1, (byte) 9)
                                 .name("&7")
@@ -42,10 +37,10 @@ public class MainMenu implements Menu{
                 .addItem(
                         13,
                         new ItemBuilder(Material.FEATHER)
-                                .name(plugin.getConfig().getString("Feather"))
+                                .name(plugin.getConfig().getString("messages.gui.feather"))
                                 .lore(
                                         new LoreBuilder()
-                                                .addLine(plugin.getConfig().getString("FeatherLore"))
+                                                .addLine(plugin.getConfig().getString("messages.gui.feather-lore"))
                                                 .colorize()
                                 )
                                 .build()
@@ -53,10 +48,10 @@ public class MainMenu implements Menu{
                 .addItem(
                         15,
                         new ItemBuilder(Material.BEACON)
-                                .name(plugin.getConfig().getString("FlyAll"))
+                                .name(plugin.getConfig().getString("messages.gui.fly-all"))
                                 .lore(
                                         new LoreBuilder()
-                                                .addLine(plugin.getConfig().getString("FlyAllLore"))
+                                                .addLine(plugin.getConfig().getString("messages.gui.fly-all-lore"))
                                                 .colorize()
                                 )
                                 .build()
@@ -64,23 +59,23 @@ public class MainMenu implements Menu{
                 .addItem(
                         22,
                         new ItemBuilder(Material.BARRIER)
-                                .name(plugin.getConfig().getString("Exit"))
+                                .name(plugin.getConfig().getString("messages.gui.exit"))
                                 .lore(
                                         new LoreBuilder()
-                                                .addLine(plugin.getConfig().getString("ExitLore"))
+                                                .addLine(plugin.getConfig().getString("messages.gui.exit-lore"))
                                                 .colorize()
                                 )
                                 .build()
                 )
                 .addItem(
-                        13,
-                        new SkullBuilder(Material.SKULL_ITEM, 1, (byte) 3).offlinePlayer(player)
-                               // .name(plugin.getConfig().getString("FlyOther"))
-                              //  .lore(
-                              //          new LoreBuilder()
-                                //                .addLine(plugin.getConfig().getString("FlyOtherLore"))
-                              //                  .colorize()
-                              //  )
+                        11,
+                        new SkullBuilder(Material.SKULL_ITEM, 1, (byte) 3).offlinePlayer((OfflinePlayer) player)
+                                .name(plugin.getConfig().getString("messages.gui.fly-other"))
+                                .lore(
+                                        new LoreBuilder()
+                                                .addLine(plugin.getConfig().getString("messages.gui.fly-other-lore"))
+                                                .colorize()
+                                )
                                 .buildSkull()
                 )
                 .addButton(
@@ -100,22 +95,33 @@ public class MainMenu implements Menu{
                                 event -> {
                                     Player eventPlayer = (Player) event.getWhoClicked();
                                     eventPlayer.playSound(eventPlayer.getLocation(), Sound.ENDERDRAGON_GROWL, 1, 1);
-
-                                    if(!eventPlayer.getAllowFlight()){
-                                        for (Player all : Bukkit.getOnlinePlayers()){
-                                            Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
-                                            all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyEnabledEveryone"));
-                                            all.setAllowFlight(true);
+                                    if (eventPlayer.hasPermission("flyother.all") || eventPlayer.hasPermission("simplefly.*")) {
+                                        if (!eventPlayer.getAllowFlight()) {
+                                            for (Player all : Bukkit.getOnlinePlayers()) {
+                                                Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
+                                                all.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.fly-enabled-everyone"));
+                                                all.setAllowFlight(true);
+                                                all.setFlying(true);
+                                                all.playSound(all.getLocation(), Sound.LEVEL_UP, 1, 1);
+                                                all.sendTitle(plugin.getConfig().getString("messages.titles.fly-all-enabled"), plugin.getConfig().getString("messages.subtitles.fly-all-enabled"));
+                                            }
+                                        } else {
+                                            for (Player all : Bukkit.getOnlinePlayers()) {
+                                                Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
+                                                all.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.fly-disabled-everyone"));
+                                                all.setAllowFlight(false);
+                                                all.setFlying(false);
+                                                all.playSound(all.getLocation(), Sound.NOTE_BASS_GUITAR, 1, 1);
+                                                all.sendTitle(plugin.getConfig().getString("messages.titles.fly-all-disabled"), plugin.getConfig().getString("messages.subtitles.fly-all-disabled"));
+                                            }
                                         }
+                                        eventPlayer.closeInventory();
+                                        return true;
                                     } else {
-                                        for (Player all : Bukkit.getOnlinePlayers()){
-                                            Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
-                                            all.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyDisabledEveryone"));
-                                            all.setAllowFlight(false);
-                                        }
+                                        eventPlayer.closeInventory();
+                                        eventPlayer.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.no-permission"));
                                     }
-                                    eventPlayer.closeInventory();
-                                    return true;
+                                    return false;
                                 }
                         )
                 )
@@ -124,8 +130,25 @@ public class MainMenu implements Menu{
                         new SimpleButton(
                                 event -> {
                                     Player eventPlayer = (Player) event.getWhoClicked();
-                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.LEVEL_UP, 1, 1);
-                                    eventPlayer.openInventory(new FlyOtherMenu().create(player).build());
+                                    if (eventPlayer.hasPermission("simplefly.flyother") || eventPlayer.hasPermission("simplefly.*")){
+                                    new AnvilGUI.Builder()
+                                            .onComplete((playerAnvil, text) -> {
+                                                if (text.length() > 0) {
+                                                    playerAnvil.performCommand("flyto " + text);
+                                                    return AnvilGUI.Response.close();
+                                                } else {
+                                                    return AnvilGUI.Response.text("Error");
+                                                }
+                                            })
+                                            .text("Insert Player Name")
+                                            .item(new ItemStack(Material.PAPER))
+                                            .plugin(plugin)
+                                            .open(eventPlayer);
+                                    return true;
+                                    } else {
+                                        eventPlayer.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.no-permission"));
+                                        eventPlayer.closeInventory();
+                                    }
                                     return true;
                                 }
                         )
@@ -135,15 +158,20 @@ public class MainMenu implements Menu{
                         new SimpleButton(
                                 event -> {
                                     Player eventPlayer = (Player) event.getWhoClicked();
-                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.LEVEL_UP, 1, 1);
-                                    if (!eventPlayer.getAllowFlight()){
+                                    if (!eventPlayer.getAllowFlight()) {
                                         Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
-                                        eventPlayer.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyEnabled"));
+                                        eventPlayer.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.fly-enabled"));
                                         eventPlayer.setAllowFlight(true);
+                                        eventPlayer.setFlying(true);
+                                        eventPlayer.playSound(eventPlayer.getLocation(), Sound.LEVEL_UP, 1, 1);
+                                        eventPlayer.sendTitle(plugin.getConfig().getString("messages.titles.fly-enabled"), plugin.getConfig().getString("messages.subtitles.fly-enabled"));
                                     } else {
                                         Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(eventPlayer));
-                                        eventPlayer.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("FlyDisabled"));
+                                        eventPlayer.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.fly-disabled"));
                                         eventPlayer.setAllowFlight(false);
+                                        eventPlayer.setFlying(false);
+                                        eventPlayer.playSound(eventPlayer.getLocation(), Sound.NOTE_BASS_GUITAR, 1, 1);
+                                        eventPlayer.sendTitle(plugin.getConfig().getString("messages.titles.fly-disabled"), plugin.getConfig().getString("messages.subtitles.fly-disabled"));
                                     }
                                     eventPlayer.closeInventory();
                                     return true;
@@ -152,57 +180,6 @@ public class MainMenu implements Menu{
 
                 );
 
-    }
-
-public class FlyOtherMenu implements Menu{
-
-    @Override
-    public MenuBuilder create(Player player) {
-        return new MenuBuilder(plugin.getConfig().getString("GuiTitle"), 6)
-                .addItem(
-                        53,
-                        new ItemBuilder(Material.ANVIL)
-                                .name("&eSearch for a player")
-                                .lore(
-                                        new LoreBuilder()
-                                                .addLine("&7Click to filter")
-                                                .colorize()
-                                )
-                                .build()
-                )
-                .addItem(
-                        49,
-                        new ItemBuilder(Material.BARRIER)
-                                .name(plugin.getConfig().getString("Exit"))
-                                .lore(
-                                        new LoreBuilder()
-                                                .addLine(plugin.getConfig().getString("ExitLore"))
-                                                .colorize()
-                                )
-                                .build()
-                )
-                .addButton(
-                        53,
-                        new SimpleButton(
-                                event -> {
-                                    Player eventPlayer = (Player) event.getWhoClicked();
-                                    eventPlayer.sendMessage("test");
-                                    return true;
-                                }
-                        )
-                )
-                .addButton(
-                        49,
-                        new SimpleButton(
-                                event -> {
-                                    Player eventPlayer = (Player) event.getWhoClicked();
-                                    eventPlayer.closeInventory();
-                                    eventPlayer.playSound(eventPlayer.getLocation(), Sound.NOTE_BASS, 1, 1);
-                                    return true;
-                                }
-                        )
-                );
-        }
     }
 }
 

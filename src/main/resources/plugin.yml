@@ -8,20 +8,43 @@ commands:
   simplefly:
     aliases: [sf, fly help]
     description: See all the commands (/sf help)
-    permission: simplefly.fly
   fly:
     aliases: fly
     description: Enable or disable the Flight mode
-    permission: simplefly.fly
   flyall:
     aliases: sfall
     description: Enables flight mode for everyone
-    permission: simplefly.*
-  flyto:
-    aliases: flyother
+  flyother:
+    aliases: flyto
     description: Enable flight mode to another player
     permission: simplefly.other
   fly reload:
     aliases: flyreload
     description: Reload the config files
-    permission: simplefly.*
+
+permissions:
+  simplefly.fly:
+    description: Allows fly command.
+    default: op
+
+  simplefly.flyall:
+    description: Enable fly to everyone.
+    default: op
+
+  simplefly.flyother:
+    description: Enable fly to another player.
+    default: op
+
+  simplefly.reload:
+    description: Reload the configuration of the plugin
+    default: op
+
+  simplefly.*:
+    description: Access to all permissions.
+    default: op
+    children:
+      simplefly.fly: true
+      simplefly.reload: true
+      simplefly.flyother: true
+      simplefly.flyall: true
+

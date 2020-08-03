@@ -1,17 +1,15 @@
 package me.snakeamazing.commands;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.snakeamazing.SimpleFly;
+import me.snakeamazing.listeners.FlyEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import team.unnamed.gui.button.SimpleButton;
-import team.unnamed.gui.item.ItemBuilder;
-import team.unnamed.gui.item.LoreBuilder;
-import team.unnamed.gui.menu.MenuBuilder;
+
 
 public class FlyOther implements CommandExecutor {
 
@@ -26,7 +24,7 @@ public class FlyOther implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (args.length == 0){
-            sender.sendMessage(plugin.getConfig().getString("Prefix") + plugin.getConfig().getString("SpecifyAPlayer"));
+            sender.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.specify-player"));
             return true;
         }
 
@@ -35,49 +33,45 @@ public class FlyOther implements CommandExecutor {
             return false;
         }
 
-
-
-        /*Player other = Bukkit.getPlayer(args[0]);
+        Player other = Bukkit.getPlayer(args[0]);
         Player player = (Player) sender;
 
-        if (player.hasPermission("simplefly.*") || (player.hasPermission("simplefly.fly.other"))){
+
 
             if (other == null){
-                String withOutPlaceholders3 = plugin.getConfig().getString("PlayerOffline");
-                String withPlaceholders3 = PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(args[0]), withOutPlaceholders3);
-                player.sendMessage(plugin.getConfig().getString("Prefix") + withPlaceholders3);
+                player.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.player-offline").replace("%target%", args[0]));
                 return true;
             }
+        if (player.hasPermission("simplefly.*") || player.hasPermission("simplefly.flyother")){
             if (!other.getAllowFlight()){
                 Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(player));
                 other.setAllowFlight(true);
 
-                String withOutPlaceholders4 = plugin.getConfig().getString("FlyEnabledBy");
-                String withPlaceholders4 = PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(args[0]), withOutPlaceholders4);
+                player.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.fly-enabled-other").replace("%target%", args[0]));
 
-                player.sendMessage(plugin.getConfig().getString("Prefix") + withPlaceholders4);
+                String withOutPlaceholders2 = plugin.getConfig().getString("messages.commands.fly-enabled-by");
+                String withPlaceholders2 = PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(args[0]), withOutPlaceholders2);
 
-                String withOutPlaceholders = plugin.getConfig().getString("FlyEnabledOther");
-                String withPlaceholders = PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(args[0]), withOutPlaceholders);
+                other.sendMessage(plugin.getConfig().getString("messages.prefix") + withPlaceholders2);
 
-                other.sendMessage(plugin.getConfig().getString("Prefix") + withPlaceholders);
+                other.sendTitle(plugin.getConfig().getString("messages.titles.fly-other-enabled").replace("%player_name%", player.getName()), plugin.getConfig().getString("messages.subtitles.fly-other-enabled").replace("%player_name%", player.getName()));
 
             } else {
                 Bukkit.getServer().getPluginManager().callEvent(new FlyEvent(player));
                 other.setAllowFlight(false);
-
-                String withOutPlaceholders5 = plugin.getConfig().getString("FlyDisabledBy");
-                String withPlaceholders5 = PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(args[0]), withOutPlaceholders5);
-
                 // THE MESSAGE THAT THE COMMAND EXECUTOR GETS
-                player.sendMessage(plugin.getConfig().getString("Prefix") + withPlaceholders5);
+                player.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.commands.fly-disabled-other").replace("%target%", args[0]));
 
-                String withOutPlaceholders2 = plugin.getConfig().getString("FlyDisabledOther");
-                String withPlaceholders2 = PlaceholderAPI.setPlaceholders(player.getPlayer(), withOutPlaceholders2);
+                String withOutPlaceholders3 = plugin.getConfig().getString("messages.commands.fly-disabled-by");
+                String withPlaceholders3 = PlaceholderAPI.setPlaceholders(player.getPlayer(), withOutPlaceholders3);
                 // THE MESSAGE THAT THE PLAYER GETS
-                other.sendMessage(plugin.getConfig().getString("Prefix") + withPlaceholders2);
+                other.sendMessage(plugin.getConfig().getString("messages.prefix") + withPlaceholders3);
+
+                other.sendTitle(plugin.getConfig().getString("messages.titles.fly-other-disabled").replace("%player_name%", player.getName()), plugin.getConfig().getString("messages.subtitles.fly-other-disabled").replace("%player_name%", player.getName()));
             }
-        } */
+        } else {
+            player.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.no-permission"));
+        }
         return false;
     }
 }

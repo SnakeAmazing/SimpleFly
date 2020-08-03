@@ -27,7 +27,11 @@ public class FlyCommand implements CommandExecutor{
             return true;
         } else {
            Player player = (Player) sender;
-           player.openInventory(new MainMenu(plugin).create(player).build());
+           if ((player.hasPermission("simplefly.*")) || (player.hasPermission("simplefly.fly"))){
+               player.openInventory(new MainMenu(plugin).create(player).build());
+           } else {
+               player.sendMessage(plugin.getConfig().getString("messages.prefix") + plugin.getConfig().getString("messages.no-permission"));
+           }
         }
         return true;
     }
